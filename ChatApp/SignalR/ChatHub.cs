@@ -5,6 +5,8 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using System.Web.Caching;
 
+
+
 using System.Threading.Tasks;
 
 namespace App.ChatApp.SignalR
@@ -28,24 +30,24 @@ namespace App.ChatApp.SignalR
 
         public static List<message> messageLog {
             get {
-                if (HttpContext.Current.Cache["messageLog"] == null)
+                if (HttpRuntime.Cache["messageLog"] == null)
                 {
-                    HttpContext.Current.Cache["messageLog"] = new List<message>();
+                    HttpRuntime.Cache["messageLog"] = new List<message>();
                 }
-                return (List<message>)HttpContext.Current.Cache["messageLog"]; 
+                return (List<message>)HttpRuntime.Cache["messageLog"]; 
             }
-            //set { HttpContext.Current.Cache["ChatLog"]; }
+            //set { HttpRuntime.Cache["ChatLog"]; }
         }
 
         public static List<user> userList {
             get {
-                if (HttpContext.Current.Cache["userList"] == null)
+                if (HttpRuntime.Cache["userList"] == null)
                 {
-                    HttpContext.Current.Cache["userList"] = new List<user>();
+                    HttpRuntime.Cache["userList"] = new List<user>();
                 }
-                return (List<user>)HttpContext.Current.Cache["userList"];
+                return (List<user>)HttpRuntime.Cache["userList"];
             }
-            //set { HttpContext.Current.Cache["ChatLog"]; }
+            //set { HttpRuntime.Cache["ChatLog"]; }
         }
 
         public void newMessage(string message, string userName)
@@ -98,13 +100,13 @@ namespace App.ChatApp.SignalR
 
         public override Task OnDisconnected()
         {
-            //string connectionID = Context.ConnectionId;
+            string connectionID = Context.ConnectionId;
 
             Clients.All.UserDisconnected(Context.ConnectionId);
 
-            //userList.Remove(userList.Single(
-            //        s => s.connectionID == Context.ConnectionId
-            //    ));
+            userList.Remove(userList.Single(
+                    s => s.connectionID == Context.ConnectionId
+                ));
             
             return base.OnDisconnected();
         }

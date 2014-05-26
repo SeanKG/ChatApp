@@ -44,6 +44,7 @@
                         user.name = name;
                     }
                 });
+                $rootScope.$apply();
             }
         },
             //Server method stubs for ease of access
