@@ -5,7 +5,7 @@ angular.module('SignalR', [])
 		var Hub = this;
 		Hub.connection = $.hubConnection();
 		Hub.proxy = Hub.connection.createHubProxy(hubName);
-		Hub.connection.start();
+		Hub.promise = Hub.connection.start();
 		Hub.on = function (event, fn) {
 			Hub.proxy.on(event, fn);
 		};

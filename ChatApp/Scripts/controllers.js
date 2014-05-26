@@ -3,7 +3,7 @@
 // Google Analytics Collection APIs Reference:
 // https://developers.google.com/analytics/devguides/collection/analyticsjs/
 
-angular.module('app.controllers', [])
+angular.module('app.controllers', ["ui.utils"])
 
     // Path: /
     .controller('HomeCtrl', ['$scope', '$location', '$window', 'ChatHub', function ($scope, $location, $window, ChatHub) {
@@ -14,13 +14,9 @@ angular.module('app.controllers', [])
 
         $scope.chatHub = ChatHub;
 
-        //$scope.$watch("ChatHub.count", function () {
-        //    $scope.count = ChatHub.count;
-        //});
-
-        $scope.hello = function () {
-            ChatHub.Hello();
-        }
+        $scope.sendMsg = function ($event) {
+            ChatHub.newMessage($scope.message);
+        };
 
     }])
 

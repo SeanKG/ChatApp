@@ -20,6 +20,8 @@ namespace App.ChatApp
 
             bundles.Add(new ScriptBundle("~/js/app").Include(
                 "~/scripts/vendor/angular-ui-router.js",
+                "~/scripts/vendor/angular-ui.js",
+                "~/scripts/vendor/ui-utils.js",
                 "~/scripts/filters.js",
                 "~/scripts/services.js",
                 "~/scripts/directives.js",

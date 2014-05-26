@@ -131,6 +131,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\angular-ui.css" />
+    <Content Include="Content\angular-ui.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\jasmine\jasmine.css" />
     <Content Include="Content\jasmine\jasmine_favicon.png" />
@@ -138,8 +140,22 @@
       <DependentUpon>app.less</DependentUpon>
     </Content>
     <Content Include="Content\app.less" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.png" />
+    <Content Include="Content\select2x2.png" />
+    <Content Include="Content\spinner.gif" />
     <Content Include="Content\variables.less" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\vendor\angular-ui-ieshiv.js" />
+    <Content Include="Scripts\vendor\angular-ui-ieshiv.min.js" />
+    <Content Include="Scripts\vendor\angular-ui.js" />
+    <Content Include="Scripts\vendor\angular-ui.min.js" />
+    <Content Include="Scripts\vendor\ui-utils-ieshiv.js" />
+    <Content Include="Scripts\vendor\ui-utils-ieshiv.min.js" />
+    <Content Include="Scripts\vendor\ui-utils.js" />
+    <Content Include="Scripts\vendor\ui-utils.min.js" />
+    <Content Include="Scripts\vendor\select2.js" />
+    <Content Include="Scripts\vendor\select2.min.js" />
     <Content Include="Scripts\vendor\angular-signalr-hub.js" />
     <Content Include="Scripts\vendor\angular-signalr-hub.min.js" />
     <Content Include="Scripts\controllers.js" />
@@ -527,6 +543,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Scripts\angular-ui\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
