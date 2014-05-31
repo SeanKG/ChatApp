@@ -1,36 +1,38 @@
 ﻿'use strict';
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directives', 'app.controllers'])
+angular.module('app', [ 'ui.router', 'app.config', 'app.filters', 'app.services', 'app.directives', 'app.controllers'])
 
     // Gets executed during the provider registrations and configuration phase. Only providers and constants can be
     // injected here. This is to prevent accidental instantiation of services before they have been fully configured.
-    .config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
+    .config(['$stateProvider', '$locationProvider', 'VIRTUAL_PATH', function ($stateProvider, $locationProvider, VIRTUAL_PATH) {
 
         // UI States, URL Routing & Mapping. For more info see: https://github.com/angular-ui/ui-router
         // ------------------------------------------------------------------------------------------------------------
 
+        //console.log(window);
+
         $stateProvider
             .state('home', {
-                url: '/',
-                templateUrl: '/views/index',
+                url: VIRTUAL_PATH + '/',
+                templateUrl: './views/index',
                 controller: 'HomeCtrl'
 
             })
             .state('about', {
-                url: '/about',
-                templateUrl: '/views/about',
+                url: VIRTUAL_PATH + '/about',
+                templateUrl: './views/about',
                 controller: 'AboutCtrl'
             })
             .state('login', {
-                url: '/login',
+                url: VIRTUAL_PATH + '/login',
                 layout: 'basic',
-                templateUrl: '/views/login',
+                templateUrl: './views/login',
                 controller: 'LoginCtrl'
             })
             .state('otherwise', {
                 url: '*path',
-                templateUrl: '/views/404',
+                templateUrl: './views/404',
                 controller: 'Error404Ctrl'
             });
 
