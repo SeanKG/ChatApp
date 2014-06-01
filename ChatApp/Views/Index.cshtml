@@ -12,7 +12,11 @@
         <input type="text" ng-model="message" ui-keypress="{13:'sendMsg($event)'}"  />
 
         <ul>
-            <li ng-repeat="message in chatHub.messages track by $index">{{message | json}}</li>
+            <li class="userMsg"  ng-repeat="message in chatHub.messages track by $index">
+                <span class="userName">{{message.userName}}</span>
+                <span class="message">{{message.messageText}}</span>
+                
+            </li>
         </ul>
     </div>
 

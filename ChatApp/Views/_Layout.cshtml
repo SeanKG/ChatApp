@@ -7,6 +7,9 @@
     <meta name="description" content="@PageData["description"]">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     @Styles.Render("~/content/css/app")
+
+    <base href="@Request.RequestContext.RouteData.DataTokens["VIRTUAL_PATH"]" />
+    
 </head>
 <body>
     <!--[if lt IE 9]>
@@ -34,6 +37,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    @*<li><img src="views/favicon.ico" /></li>*@
                     <li>
                         <a href="./login">Sign In</a>
                     </li>
@@ -47,14 +51,6 @@
         @*<span data-app-version></span>*@
     </div>
 
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="~/Scripts/vendor/jquery.signalR-2.0.0.min.js"></script>
-
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-    <script src="~/Scripts/vendor/angular-signalr-hub.js"></script>
-
-    <script src="~/Scripts/vendor/angular-cookies.js"></script>
 
     @Scripts.Render("~/js/app")
     @*

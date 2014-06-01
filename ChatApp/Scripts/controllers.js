@@ -3,7 +3,7 @@
 // Google Analytics Collection APIs Reference:
 // https://developers.google.com/analytics/devguides/collection/analyticsjs/
 
-angular.module('app.controllers', ["ui.utils"])
+angular.module('app.controllers', ["ui.utils", 'ngAnimate'])
 
     // Path: /
     .controller('HomeCtrl', ['$scope', '$location', '$window', 'ChatHub', function ($scope, $location, $window, ChatHub) {

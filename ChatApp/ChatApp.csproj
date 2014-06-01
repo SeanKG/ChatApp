@@ -14,7 +14,7 @@
     <RootNamespace>App.ChatApp</RootNamespace>
     <AssemblyName>App.ChatApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -146,6 +146,10 @@
     <Content Include="Content\spinner.gif" />
     <Content Include="Content\variables.less" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\config.js" />
+    <Content Include="Scripts\filters - Copy.spec.js">
+      <DependentUpon>config.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\vendor\angular-ui-ieshiv.js" />
     <Content Include="Scripts\vendor\angular-ui-ieshiv.min.js" />
     <Content Include="Scripts\vendor\angular-ui.js" />
@@ -497,6 +501,11 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <None Include="Properties\PublishProfiles\test 1.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\vendor\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\vendor\jquery-2.0.3.js" />
     <Content Include="Scripts\vendor\jquery-2.0.3.min.js" />
@@ -535,6 +544,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Routing\DefaultRoute.cs" />
     <Compile Include="Routing\DefaultRouteHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -564,7 +578,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8080/</IISUrl>
+          <IISUrl>http://localhost/ChatApp/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

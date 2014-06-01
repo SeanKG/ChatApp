@@ -21,7 +21,9 @@ namespace App.ChatApp.Routing
             //     ~/views/about -> ~/views/about.cshtml
             //     ~/xxx         -> ~/views/404.cshtml
             var filePath = requestContext.HttpContext.Request.AppRelativeCurrentExecutionFilePath;
-
+            
+            requestContext.RouteData.DataTokens.Add("VIRTUAL_PATH", HttpContext.Current.Request.Path);
+            
             if (filePath == "~/")
             {
                 filePath = "~/views/index.cshtml";

@@ -1,11 +1,11 @@
 ﻿'use strict';
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-angular.module('app', [ 'ui.router', 'app.config', 'app.filters', 'app.services', 'app.directives', 'app.controllers'])
+angular.module('app', [ 'ui.router', 'app.filters', 'app.services', 'app.directives', 'app.controllers'])
 
     // Gets executed during the provider registrations and configuration phase. Only providers and constants can be
     // injected here. This is to prevent accidental instantiation of services before they have been fully configured.
-    .config(['$stateProvider', '$locationProvider', 'VIRTUAL_PATH', function ($stateProvider, $locationProvider, VIRTUAL_PATH) {
+    .config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
 
         // UI States, URL Routing & Mapping. For more info see: https://github.com/angular-ui/ui-router
         // ------------------------------------------------------------------------------------------------------------
@@ -14,18 +14,18 @@ angular.module('app', [ 'ui.router', 'app.config', 'app.filters', 'app.services'
 
         $stateProvider
             .state('home', {
-                url: VIRTUAL_PATH + '/',
+                url: '/',
                 templateUrl: './views/index',
                 controller: 'HomeCtrl'
 
             })
             .state('about', {
-                url: VIRTUAL_PATH + '/about',
+                url: '/about',
                 templateUrl: './views/about',
                 controller: 'AboutCtrl'
             })
             .state('login', {
-                url: VIRTUAL_PATH + '/login',
+                url: '/login',
                 layout: 'basic',
                 templateUrl: './views/login',
                 controller: 'LoginCtrl'
@@ -47,6 +47,7 @@ angular.module('app', [ 'ui.router', 'app.config', 'app.filters', 'app.services'
         // <ui-view> contains a pre-rendered template for the current view
         // caching it will prevent a round-trip to a server at the first page load
         var view = angular.element('#ui-view');
+        console.log(angular.element("base"));
         $templateCache.put(view.data('tmpl-url'), view.html());
 
         // Allows to retrieve UI Router state information from inside templates

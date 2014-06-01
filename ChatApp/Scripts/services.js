@@ -19,6 +19,8 @@
         var UserName = ChatHub.UserName = $cookies.UserName
             || 'Guest' + Math.floor(1000 + Math.random() * 9000);
 
+        $cookies.UserName = UserName;
+
         var ConnectionID = ChatHub.ConnectionID  = null;
 
         var hub = new Hub('ChatHub', {
