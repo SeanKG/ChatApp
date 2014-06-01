@@ -9,4 +9,41 @@
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
+.userMsg {
+    position:relative;
+}
+
+// Animations for userMsg item
+
+.userMsg.ng-enter, .userMsg.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+/* starting animations for enter */
+.userMsg.ng-enter { 
+    opacity:0;
+    top:20px
+}        
+
+/* terminal animations for enter */
+.userMsg.ng-enter-active { 
+    opacity:1;
+    top:0px
+} 
+
+
+
+
+/* starting animations for leave */
+.userMsg.ng-leave { 
+    opacity:1;
+    top:0px
+}        
+
+/* terminal animations for leave */
+.userMsg.ng-leave-active { 
+    opacity:0;
+    top:20px
+} 
 
