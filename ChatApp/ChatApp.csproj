@@ -144,6 +144,9 @@
     <Content Include="Content\select2.png" />
     <Content Include="Content\select2x2.png" />
     <Content Include="Content\spinner.gif" />
+    <Content Include="Content\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
     <Content Include="Content\variables.less" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\config.js" />
@@ -502,6 +505,12 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\includes.less" />
+    <Content Include="Content\app.css.map">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
+    <Content Include="Content\variables.css.map">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\test 1.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

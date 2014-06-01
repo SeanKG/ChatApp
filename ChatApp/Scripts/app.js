@@ -47,7 +47,6 @@ angular.module('app', [ 'ui.router', 'app.filters', 'app.services', 'app.directi
         // <ui-view> contains a pre-rendered template for the current view
         // caching it will prevent a round-trip to a server at the first page load
         var view = angular.element('#ui-view');
-        console.log(angular.element("base"));
         $templateCache.put(view.data('tmpl-url'), view.html());
 
         // Allows to retrieve UI Router state information from inside templates

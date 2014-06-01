@@ -5,24 +5,26 @@
 <div class="row">
 
     <div class="col-sm-9">
-        <h2>Welcome!</h2>
+        @*<h2>Welcome!</h2>*@
 
         @*<app-version></app-version>*@
 
-        <input type="text" ng-model="message" ui-keypress="{13:'sendMsg($event)'}"  />
 
-        <ul>
-            <li class="userMsg"  ng-repeat="message in chatHub.messages track by $index">
+        <ul class="user-msg-list">
+            <li class="userMsg" ng-repeat="message in chatHub.messages track by $index">
                 <span class="userName">{{message.userName}}</span>
                 <span class="message">{{message.messageText}}</span>
-                
+
             </li>
         </ul>
+
+        <input type="text" class="user-input" ng-model="message" ui-keypress="{13:'sendMsg($event)'}" />
+
     </div>
 
     <div class="col-sm-3">
         <ul>
-            <li ng-repeat="user in chatHub.users track by $index" >{{user.name}}</li>
+            <li ng-repeat="user in chatHub.users track by $index">{{user.name}}</li>
         </ul>
     </div>
 

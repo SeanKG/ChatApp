@@ -5,7 +5,20 @@
 
 angular.module('app.controllers', ["ui.utils", 'ngAnimate'])
 
-    // Path: /
+    // Used for nav and page shell
+    .controller('MainCtrl', ['$scope', 'ChatHub', '$animate', function ($scope, ChatHub, $animate) {
+
+        $scope.showMenu = function () {
+
+        }
+
+        $scope.hideMenu = function () {
+
+        }
+
+    }])
+
+    // Path /
     .controller('HomeCtrl', ['$scope', '$location', '$window', 'ChatHub', function ($scope, $location, $window, ChatHub) {
         $scope.$root.title = 'AngularJS SPA Template for Visual Studio';
         $scope.$on('$viewContentLoaded', function () {

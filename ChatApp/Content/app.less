@@ -9,13 +9,22 @@
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
+
+body, html, .container-fuid, .row, .main-view, #ui-view, .col-sm-9{
+    height:100%;
+}
+
+input:focus{
+    outline:none;
+}
+
 .userMsg {
     position:relative;
-}
+} 
 
 // Animations for userMsg item
 
-.userMsg.ng-enter, .userMsg.ng-leave {
+.userMsg.ng-enter, .userMsg.ng-leave, .user-msg-list {
   -webkit-transition:0.5s linear all;
   transition:0.5s linear all;
 }
@@ -33,8 +42,6 @@
 } 
 
 
-
-
 /* starting animations for leave */
 .userMsg.ng-leave { 
     opacity:1;
@@ -46,4 +53,34 @@
     opacity:0;
     top:20px
 } 
+
+
+
+.user-msg-list{
+    position:absolute;
+    bottom:70px;
+    width:100%;
+    list-style:none;
+    font-size:18px
+}
+
+.userMsg{
+    padding:5px;
+}
+
+.userMsg .userName{
+    font-weight:bold;
+}
+
+
+.user-input{
+    width:100%;
+    position:absolute;
+    bottom:20px;
+    padding:10px;
+    border:none;
+    background:rgba(0,0,0,.3);
+    color:#000000;
+}
+
 
