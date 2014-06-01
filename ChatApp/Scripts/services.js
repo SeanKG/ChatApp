@@ -31,7 +31,7 @@
             },
 
             NewConnectionID: function (id) {
-                ChatHub.users.push({id:id});
+                users.push({id:id});
                 $rootScope.$apply();
             },
 
@@ -40,10 +40,15 @@
                 $rootScope.$apply();
             },
 
+            SetUserList: function (userList) {
+                users = ChatHub.users = userList;
+                $rootScope.$apply();
+            },
+
             SetUserName: function (name, connectionID) {
                 angular.forEach(users, function (user, index) {
-                    if (user.id == connectionID) {
-                        user.name = name;
+                    if (user.connectionID == connectionID) {
+                        user.userName = name;
                     }
                 });
                 $rootScope.$apply();

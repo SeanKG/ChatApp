@@ -10,11 +10,11 @@ angular.module('app.controllers', ["ui.utils", 'ngAnimate'])
 
         $scope.showMenu = function () {
 
-        }
+        };
 
         $scope.hideMenu = function () {
 
-        }
+        };
 
     }])
 
@@ -29,6 +29,7 @@ angular.module('app.controllers', ["ui.utils", 'ngAnimate'])
 
         $scope.sendMsg = function ($event) {
             ChatHub.newMessage($scope.message);
+            $scope.message = "";
         };
 
     }])

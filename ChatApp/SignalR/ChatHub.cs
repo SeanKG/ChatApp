@@ -47,16 +47,18 @@ namespace App.ChatApp.SignalR
         }
 
 
-        /// <summary>
-        /// Stores a list of connected users in cache
-        /// </summary>
-        public static List<user> userList {
-            get {
-                // set cache item if null
-                if (HttpRuntime.Cache["userList"] == null) { HttpRuntime.Cache["userList"] = new List<user>(); }
-                return (List<user>)HttpRuntime.Cache["userList"];
-            }
-        }
+        public static List<user> userList = new List<user>();
+
+        ///// <summary>
+        ///// Stores a list of connected users in cache
+        ///// </summary>
+        //public static List<user> userList {
+        //    get {
+        //        // set cache item if null
+        //        if (HttpRuntime.Cache["userList"] == null) { HttpRuntime.Cache["userList"] = new List<user>(); }
+        //        return (List<user>)HttpRuntime.Cache["userList"];
+        //    }
+        //}
 
 
         /// <summary>
@@ -110,9 +112,10 @@ namespace App.ChatApp.SignalR
         /// <returns></returns>
         public override Task OnConnected()
         {
-            Clients.All.NewConnectionID(Context.ConnectionId);
-            Clients.Caller.SetConnectionID(Context.ConnectionId);
+            //Clients.Others.NewConnectionID(Context.ConnectionId);
             userList.Add(new user() { connectionID = Context.ConnectionId });
+            Clients.Caller.SetConnectionID(Context.ConnectionId);
+            Clients.All.SetUserList(userList);
             return base.OnConnected();
         }
 
@@ -125,10 +128,10 @@ namespace App.ChatApp.SignalR
         public override Task OnDisconnected()
         {
             string connectionID = Context.ConnectionId;
-            Clients.All.UserDisconnected(Context.ConnectionId);
             userList.Remove(userList.Single(
                     s => s.connectionID == Context.ConnectionId
                 ));
+            Clients.All.SetUserList(userList);
             return base.OnDisconnected();
         }
 
