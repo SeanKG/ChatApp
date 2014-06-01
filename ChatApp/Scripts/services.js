@@ -57,7 +57,7 @@
             //Server method stubs for ease of access
             ['newMessage', 'SetUserName']
         );
-
+        console.log("gdfhgdhdfsh");
         hub.promise.done(function () {
             hub.SetUserName(UserName);
         });

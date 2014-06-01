@@ -150,9 +150,6 @@
     <Content Include="Content\variables.less" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\config.js" />
-    <Content Include="Scripts\filters - Copy.spec.js">
-      <DependentUpon>config.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\vendor\angular-ui-ieshiv.js" />
     <Content Include="Scripts\vendor\angular-ui-ieshiv.min.js" />
     <Content Include="Scripts\vendor\angular-ui.js" />
@@ -511,7 +508,9 @@
     <Content Include="Content\variables.css.map">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\skgChat.pubxml" />
     <None Include="Properties\PublishProfiles\test 1.pubxml" />
+    <None Include="Properties\PublishProfiles\test default site.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
