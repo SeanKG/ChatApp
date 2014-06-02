@@ -22,7 +22,12 @@ namespace App.ChatApp.Routing
             //     ~/xxx         -> ~/views/404.cshtml
             var filePath = requestContext.HttpContext.Request.AppRelativeCurrentExecutionFilePath;
 
-            requestContext.RouteData.DataTokens.Add("VIRTUAL_PATH", HttpContext.Current.Request.Url.AbsoluteUri + '/');
+            var basePath = HttpContext.Current.Request.Url.AbsoluteUri;
+            if (!basePath.EndsWith("/")) {
+                basePath += '/';
+            }
+            
+            requestContext.RouteData.DataTokens.Add("VIRTUAL_PATH", basePath);
             
             if (filePath == "~/")
             {
