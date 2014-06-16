@@ -19,7 +19,7 @@ angular.module('app.controllers', ["ui.utils", 'ngAnimate'])
     }])
 
     // Path /
-    .controller('HomeCtrl', ['$scope', '$location', '$window', 'ChatHub', function ($scope, $location, $window, ChatHub) {
+    .controller('HomeCtrl', ['$scope', '$location', '$window', 'ChatHub', '$sanitize', function ($scope, $location, $window, ChatHub, $sanitize) {
         $scope.$root.title = 'AngularJS SPA Template for Visual Studio';
         $scope.$on('$viewContentLoaded', function () {
             $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
@@ -28,7 +28,7 @@ angular.module('app.controllers', ["ui.utils", 'ngAnimate'])
         $scope.chatHub = ChatHub;
 
         $scope.sendMsg = function ($event) {
-            ChatHub.newMessage($scope.message);
+            ChatHub.newMessage($sanitize($scope.message));
             $scope.message = "";
         };
 

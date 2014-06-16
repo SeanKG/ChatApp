@@ -31,6 +31,7 @@ namespace App.ChatApp
                     "~/scripts/vendor/ui-utils.js",
                     "~/scripts/vendor/angular-ui-router.js",
                     "~/scripts/vendor/angular-animate.js",
+                    "~/scripts/vendor/angular-sanitize.js",
 
                     // my stuff (filters, services, directives, controllers, app)
                     "~/scripts/filters.js",

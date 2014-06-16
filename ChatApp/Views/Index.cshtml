@@ -13,7 +13,7 @@
         <ul class="user-msg-list">
             <li class="userMsg" ng-repeat="message in chatHub.messages track by $index">
                 <span class="userName">{{message.userName}}</span>
-                <span class="message">{{message.messageText}}</span>
+                <span class="message" ng-bind-html="message.messageText | linky"></span>
 
             </li>
         </ul>
