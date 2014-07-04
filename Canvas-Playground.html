@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      canvas{
+        border:1px solid black;
+      }
+
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="100" height="30"></canvas>
+    <script>
+      (function(){
+
+        var cvs = document.getElementById('myCanvas');
+        var ctx = cvs.getContext('2d');
+        var circles = [];
+        var loopIsRunning = false;
+
+        var Circle = function(options){
+          this.x = options.x;
+          this.y = options.y;
+          this.r = options.r || 10;
+          this.innerColor = options.innerColor;
+          this.outerColor = options.outerColor;
+          this.v = options.v || 10;
+        }
+
+        Circle.prototype.render = function(ctx){
+          if(this.innerColor.a == 0){
+
+          }else{
+
+            if(this.r < 100){
+              this.r += this.v;
+              this.v = Math.round(this.v - 0.001);
+            }else{
+              this.r = this.r + 2;
+              this.innerColor.a = this.innerColor.a - 2;
+            }
+
+            var grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+            // light blue
+            grd.addColorStop(0, this.innerColor.toString());
+            // dark blue
+            grd.addColorStop(1, this.outerColor.toString());
+
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+            ctx.fillStyle = grd;
+            ctx.fill();
+            // ctx.lineWidth = 5;
+            // ctx.strokeStyle = '#003300';
+            // ctx.stroke();
+           
+          }
+        }
+
+        // RGBA
+        var RGBA = function(r,g,b,a){
+          this.r = r;
+          this.g = g;
+          this.b = b;
+          this.a = a;
+        }
+
+        RGBA.prototype.toString = function(){
+          return 'rgba(' + this.r + ', ' + this.g + ', ' + this.b + ', ' + Math.max(0, this.a) / 100 + ')';
+        }
+
+  
+        cvs.addEventListener('click', function(e){
+          circles.push(
+            new Circle({
+              x: e.clientX,
+              y: e.clientY,
+              innerColor: new RGBA(0,0,0,100),
+              outerColor: new RGBA(0,0,0,0),
+            })
+          );
+          if(!loopIsRunning){ animate(); }
+        });
+
+        function animate(){
+          loopIsRunning = true;
+
+          ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+          for(var i = 0; i < circles.length; i++){
+            var c = circles[i];
+            c.render(ctx);
+          }
+
+          requestAnimationFrame(animate);
+          // create radial gradient
+        }
+
+      
+      }());
+    </script>
+  </body>
+</html> 
+
