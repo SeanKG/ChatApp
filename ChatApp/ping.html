@@ -15,7 +15,7 @@
     </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <canvas id="myCanvas" width="200" height="48"></canvas>
     <script>
       (function(){
 
@@ -39,7 +39,7 @@
           this.r = options.r || 10;
           this.innerColor = options.innerColor;
           this.outerColor = options.outerColor;
-          this.v = options.v || 10;
+          this.v = options.v || 7;
         }
 
         Circle.prototype.render = function(ctx){
@@ -47,19 +47,20 @@
 
           }else{
 
-            if(this.r < 100){
+            if(this.r < 150){
               this.r += this.v;
-              this.v = Math.round(this.v - 0.001);
+              this.v = Math.round(this.v - 0.004);
             }else{
               this.r = this.r + 2;
-              this.innerColor.a = this.innerColor.a - 2;
+              this.innerColor.a = this.innerColor.a - 3;
+              this.outerColor.a = this.outerColor.a - 2;
             }
 
             var grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
 
-            grd.addColorStop(0, this.innerColor.toString());
+            grd.addColorStop(1, this.innerColor.toString());
 
-            grd.addColorStop(1, this.outerColor.toString());
+            grd.addColorStop(0, this.outerColor.toString());
 
 
             ctx.beginPath();
@@ -91,8 +92,8 @@
             new Circle({
               x: e.clientX,
               y: e.clientY,
-              innerColor: new RGBA(0,0,0,50),
-              outerColor: new RGBA(0,0,0,0),
+              innerColor: new RGBA(100,100,200,90),
+              outerColor: new RGBA(100,100,200,80),
             })
           );
           if(!loopIsRunning){ animate(); }
