@@ -10,15 +10,32 @@
 
       canvas{
         border:1px solid black;
+        position:relative;
       }
 
     </style>
   </head>
   <body>
+    <input type='color' id='innerColor' />
     <canvas id="myCanvas" width="200" height="48"></canvas>
     <script>
       (function(){
 
+ function getMousePos(canvas, evt) {
+
+
+Array.prototype.indexOfObject = function (object) {
+    for (var i = 0; i < this.length; i++) {
+        if (JSON.stringify(this[i]) === JSON.stringify(object))
+            return i;
+    }
+}
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
 
       window.requestAnimFrame = (function(callback) {
         return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -43,9 +60,6 @@
         }
 
         Circle.prototype.render = function(ctx){
-          if(this.innerColor.a == 0){
-
-          }else{
 
             if(this.r < 150){
               this.r += this.v;
@@ -70,8 +84,11 @@
             // ctx.lineWidth = 5;
             // ctx.strokeStyle = '#003300';
             // ctx.stroke();
-           
-          }
+
+            if(this.outerColor.a < 0 && this.innerColor.a < 0){
+              circles.splice(circles.indexOfObject(this), 1);
+            }
+          
         }
 
         // RGBA
@@ -88,10 +105,11 @@
 
   
         cvs.addEventListener('click', function(e){
+          var pos = getMousePos(cvs, e);
           circles.push(
             new Circle({
-              x: e.clientX,
-              y: e.clientY,
+              x: pos.x,
+              y: pos.y,
               innerColor: new RGBA(100,100,200,90),
               outerColor: new RGBA(100,100,200,80),
             })
@@ -109,7 +127,14 @@
             c.render(ctx);
           }
 
-          requestAnimFrame(animate);
+          //console.log(circles);
+
+          if(circles.length){
+            requestAnimFrame(animate);            
+          } else{
+            loopIsRunning = false;
+          }
+
           // create radial gradient
         }
 
